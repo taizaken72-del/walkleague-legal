@@ -51,20 +51,24 @@
   </div>
 <script>
   (function () {
-    var u = new URLSearchParams(location.search).get('u');
-    if (u) {
-      document.getElementById('who').textContent = '@' + u;
-      document.getElementById('openApp').href = 'walkleague://add?u=' + encodeURIComponent(u);
+    // The invite carries an unguessable CODE (not a username), so only someone the
+    // link was actually shared with can add the inviter.
+    var c = new URLSearchParams(location.search).get('c');
+    if (c) {
+      document.getElementById('openApp').href = 'walkleague://add?c=' + encodeURIComponent(c);
     }
+    // TODO at launch: replace with your real App Store URL.
     var STORE = 'https://apps.apple.com/app/walkleague';
     var dl = document.getElementById('download');
     dl.href = STORE;
+    // Deferred deep link: drop the invite code on the clipboard so the app
+    // auto-adds the friend after install, then continue to the App Store.
     dl.addEventListener('click', function (e) {
-      if (!u) return;
+      if (!c) return;
       e.preventDefault();
       var go = function () { location.href = STORE; };
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText('WLINVITE|add|' + u).then(go, go);
+        navigator.clipboard.writeText('WLINVITE|add|' + c).then(go, go);
       } else { go(); }
     });
   })();
