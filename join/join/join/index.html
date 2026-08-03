@@ -71,9 +71,12 @@
       var deep = 'walkleague://join?t=' + encodeURIComponent(t) + (ref ? '&ref=' + encodeURIComponent(ref) : '');
       document.getElementById('openApp').href = deep;
     }
+    // TODO at launch: replace with your real App Store URL.
     var STORE = 'https://apps.apple.com/app/walkleague';
     var dl = document.getElementById('download');
     dl.href = STORE;
+    // Deferred deep link: drop the code on the clipboard so the app auto-fills it
+    // after install, then continue to the App Store.
     dl.addEventListener('click', function (e) {
       if (!code) return;
       e.preventDefault();
