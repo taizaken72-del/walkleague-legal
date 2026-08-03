@@ -49,7 +49,7 @@
     <div class="code" id="codeBox" style="display:none">
       <div class="clabel">Your friend's invite code — save it! ✍️</div>
       <div class="cval" id="codeVal">--------</div>
-      <div class="chint">Download the app, then <b style="color:#fff">type this code on the sign-up page.</b> That's what lets your friend into their challenge.</div>
+      <div class="chint">Tap Download and it'll <b style="color:#fff">fill in for you</b> on the sign-up page. (If not, just type this code.)</div>
     </div>
 
     <div class="btns">
@@ -62,8 +62,9 @@
   (function () {
     var q = new URLSearchParams(location.search);
     var t = q.get('t'), ref = q.get('ref');
-    if (ref) {
-      document.getElementById('codeVal').textContent = ref.substring(0, 8).toUpperCase();
+    var code = ref ? ref.substring(0, 8).toUpperCase() : '';
+    if (code) {
+      document.getElementById('codeVal').textContent = code;
       document.getElementById('codeBox').style.display = 'block';
     }
     if (t) {
@@ -71,7 +72,16 @@
       document.getElementById('openApp').href = deep;
     }
     var STORE = 'https://apps.apple.com/app/walkleague';
-    document.getElementById('download').href = STORE;
+    var dl = document.getElementById('download');
+    dl.href = STORE;
+    dl.addEventListener('click', function (e) {
+      if (!code) return;
+      e.preventDefault();
+      var go = function () { location.href = STORE; };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText('WLINVITE|join|' + code).then(go, go);
+      } else { go(); }
+    });
   })();
 </script>
 </body>
