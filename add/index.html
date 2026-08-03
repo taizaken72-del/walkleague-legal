@@ -57,7 +57,16 @@
       document.getElementById('openApp').href = 'walkleague://add?u=' + encodeURIComponent(u);
     }
     var STORE = 'https://apps.apple.com/app/walkleague';
-    document.getElementById('download').href = STORE;
+    var dl = document.getElementById('download');
+    dl.href = STORE;
+    dl.addEventListener('click', function (e) {
+      if (!u) return;
+      e.preventDefault();
+      var go = function () { location.href = STORE; };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText('WLINVITE|add|' + u).then(go, go);
+      } else { go(); }
+    });
   })();
 </script>
 </body>
