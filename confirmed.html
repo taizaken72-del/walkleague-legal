@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Email confirmed · WalkLeague</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+         margin: 0; min-height: 100vh; color: #0f1a13; background: #f6f8f6;
+         display: flex; flex-direction: column; align-items: center;
+         justify-content: center; padding: 40px 20px; line-height: 1.55; }
+  .card { width: 100%; max-width: 520px; background: #fff; border: 1px solid #e4e9e5;
+          border-radius: 20px; padding: 44px 32px 36px; box-shadow: 0 10px 40px rgba(10,40,20,.06);
+          text-align: center; animation: rise .5s cubic-bezier(.2,.7,.3,1) both; }
+  .badge { width: 88px; height: 88px; margin: 0 auto 22px; border-radius: 24px;
+           background: linear-gradient(135deg, #0a7d3c, #00c46a);
+           display: flex; align-items: center; justify-content: center;
+           box-shadow: 0 8px 24px rgba(0,196,106,.28); }
+  .badge svg { width: 46px; height: 46px; }
+  .badge path { stroke: #fff; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round;
+                fill: none; stroke-dasharray: 60; stroke-dashoffset: 60;
+                animation: draw .5s .25s cubic-bezier(.6,0,.4,1) forwards; }
+  h1 { font-size: 30px; margin: 0 0 8px; letter-spacing: -.5px; }
+  .tag { color: #4a5751; font-size: 17px; margin: 0 0 26px; }
+  .next { background: #eef7f1; border: 1px solid #d5e8dd; border-radius: 14px;
+          padding: 16px 18px; font-size: 15.5px; color: #1c3527; margin: 0 0 26px; }
+  .next b { color: #0a7d3c; }
+  a.btn { display: block; padding: 14px 18px; border-radius: 12px; text-decoration: none;
+          font-weight: 600; font-size: 16px; color: #0a7d3c; background: #eef7f1;
+          border: 1px solid #d5e8dd; transition: background .15s ease; }
+  a.btn:hover { background: #e3f2ea; }
+  .foot { margin-top: 26px; font-size: 13px; color: #7a857f; }
+  .foot a { color: #0a7d3c; }
+  @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    .card { animation: none; }
+    .badge path { animation: none; stroke-dashoffset: 0; }
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="badge" aria-hidden="true">
+      <svg viewBox="0 0 48 48"><path d="M12 25 L21 34 L37 15"/></svg>
+    </div>
+    <h1>Email confirmed</h1>
+    <p class="tag">Your WalkLeague account is verified. You're all set.</p>
+    <div class="next">Head back to the <b>WalkLeague app</b> and log in to start competing for real prizes.</div>
+    <a class="btn" href="index.html">Back to WalkLeague</a>
+    <p class="foot">Operated by Tai Zaken · <a href="mailto:support@walkleague.app">support@walkleague.app</a></p>
+  </div>
+</body>
+</html>
